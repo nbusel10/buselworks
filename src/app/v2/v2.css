@@ -1,0 +1,26 @@
+/* Simple ivory v2 — thin helpers; main tokens come from globals.css */
+
+.theme-v2 {
+  background: var(--bg-ivory);
+  color: var(--ink);
+}
+
+.theme-v2 .v2-container {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+.theme-v2 .v2-container-wide {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.theme-v2 .v2-section {
+  padding-block: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .theme-v2 .v2-section {
+    padding-block: 4.5rem;
+  }
+}

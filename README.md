@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Buselworks
 
-## Getting Started
+Marketing site for [Buselworks](https://buselworks.com) — boutique web design and development by Nancy Buselmeier.
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS
+- Framer Motion
+- Formspree (contact form)
+
+## Alternate design (v2)
+
+A simpler ivory redesign lives at `/v2` for side-by-side comparison with the fuller original at `/`. Footers link between them.
+
+## Setup
+
+
+```bash
+npm install
+cp .env.example .env.local
+```
+
+Add your Formspree form ID to `.env.local`:
+
+```
+NEXT_PUBLIC_FORMSPREE_ID=your_form_id
+```
+
+Create a form at [formspree.io](https://formspree.io), then paste the ID from the form endpoint (`https://formspree.io/f/XXXX`).
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Portfolio screenshots
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Place cropped homepage screenshots in `public/work/{slug}.jpg` matching slugs in `src/data/work.ts`. Typographic fallbacks render if an image is missing.
 
-## Learn More
+Optional capture helper:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run capture-work
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Vercel-ready. Set `NEXT_PUBLIC_FORMSPREE_ID` in project environment variables.
