@@ -1,29 +1,34 @@
 import Link from "next/link";
 
+const WORDMARK = {
+  light: "/brand/logo-wordmark.svg",
+  dark: "/brand/logo-wordmark-on-dark.svg",
+} as const;
+
 export function LogoWordmark({
   className = "",
   variant = "light",
+  priority = false,
 }: {
   className?: string;
   variant?: "light" | "dark";
+  priority?: boolean;
 }) {
-  const busel = variant === "dark" ? "text-white/75" : "text-ink";
-
   return (
-    <span
-      className={`font-display inline-flex items-baseline text-[1.35rem] font-semibold tracking-[-0.04em] md:text-[1.5rem] ${className}`}
-      aria-label="buselworks"
-    >
-      <span className={busel}>busel</span>
-      <span className="text-aqua">works</span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element -- SVG wordmark; keep native scaling
+    <img
+      src={WORDMARK[variant]}
+      alt="buselworks"
+      className={`h-[1.65rem] w-auto md:h-7 ${className}`}
+      fetchPriority={priority ? "high" : undefined}
+    />
   );
 }
 
 export function LogoMarkLink() {
   return (
     <Link href="/" aria-label="Buselworks home">
-      <LogoWordmark />
+      <LogoWordmark priority />
     </Link>
   );
 }

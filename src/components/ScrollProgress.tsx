@@ -92,7 +92,7 @@ export function ScrollProgress() {
         <img
           src="/favicon.svg"
           alt=""
-          className="h-[14px] w-[14px] rounded-[3px]"
+          className="h-5 w-5"
         />
       </span>
       <span className="sr-only">{Math.round(progress * 100)}% of page</span>
