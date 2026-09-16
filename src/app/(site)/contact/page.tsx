@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { ContactTitle } from "@/components/ContactTitle";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -14,9 +15,7 @@ export default function ContactPage() {
       <div className="v2-container-wide grid gap-10 lg:grid-cols-2">
         <div>
           <p className="eyebrow">Contact</p>
-          <h1 className="font-display mt-3 text-[2.15rem] font-semibold tracking-tight sm:text-5xl">
-            Have a “what if we…” idea?
-          </h1>
+          <ContactTitle className="font-display mt-3 text-[2.15rem] font-semibold tracking-tight sm:text-5xl" />
           <p className="mt-4 max-w-md text-base text-ink-soft">
             Tell us about it. It doesn’t have to be completely figured out yet.
           </p>
