@@ -37,75 +37,80 @@ export function V2Header() {
   }
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "border-b border-border bg-ivory/90 backdrop-blur-md"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="v2-container-wide flex h-16 items-center justify-between gap-4 md:h-[4.25rem]">
-        <Link
-          href="/v2"
-          className="relative z-50"
-          aria-label="Buselworks home"
-          onClick={closeMenu}
-        >
-          <LogoWordmark />
-        </Link>
-
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {nav.map((item) => {
-            const active =
-              item.href !== "/v2/#how-we-work" && pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-aqua-dark ${
-                  active ? "text-aqua-dark" : "text-ink-soft"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <Link href="/v2/contact" className="btn-primary text-sm">
-            Start Something <span aria-hidden>→</span>
+    <>
+      <header
+        className={`sticky top-0 z-50 transition-colors duration-300 ${
+          open
+            ? "border-b border-border bg-ivory"
+            : scrolled
+              ? "border-b border-border bg-ivory/90 backdrop-blur-md"
+              : "bg-transparent"
+        }`}
+      >
+        <div className="v2-container-wide flex h-16 items-center justify-between gap-4 md:h-[4.25rem]">
+          <Link
+            href="/v2"
+            className="relative z-50"
+            aria-label="Buselworks home"
+            onClick={closeMenu}
+          >
+            <LogoWordmark priority />
           </Link>
-        </nav>
 
-        <button
-          type="button"
-          className="relative z-50 flex h-10 w-10 items-center justify-center lg:hidden"
-          aria-expanded={open}
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <div className="flex w-5 flex-col gap-1.5">
-            <span
-              className={`block h-px w-full bg-ink transition-transform ${
-                open ? "translate-y-[7px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-px w-full bg-ink transition-opacity ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-px w-full bg-ink transition-transform ${
-                open ? "-translate-y-[7px] -rotate-45" : ""
-              }`}
-            />
-          </div>
-        </button>
-      </div>
+          <nav className="hidden items-center gap-6 xl:flex xl:gap-7" aria-label="Primary">
+            {nav.map((item) => {
+              const active =
+                item.href !== "/v2/#how-we-work" && pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors hover:text-aqua-dark ${
+                    active ? "text-aqua-dark" : "text-ink-soft"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <Link href="/v2/contact" className="btn-primary text-sm">
+              Start Something <span aria-hidden>→</span>
+            </Link>
+          </nav>
+
+          <button
+            type="button"
+            className="relative z-50 flex h-11 w-11 items-center justify-center xl:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <div className="flex w-5 flex-col gap-1.5">
+              <span
+                className={`block h-px w-full bg-ink transition-transform ${
+                  open ? "translate-y-[7px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-full bg-ink transition-opacity ${
+                  open ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-full bg-ink transition-transform ${
+                  open ? "-translate-y-[7px] -rotate-45" : ""
+                }`}
+              />
+            </div>
+          </button>
+        </div>
+      </header>
 
       {open ? (
-        <div className="fixed inset-0 z-40 bg-ivory lg:hidden">
+        <div id="mobile-nav" className="fixed inset-0 z-40 bg-ivory xl:hidden">
           <nav
-            className="flex h-full flex-col justify-center gap-6 px-8 pt-16"
+            className="flex h-full flex-col justify-center gap-6 px-6 pt-20 sm:px-8"
             aria-label="Mobile"
           >
             {nav.map((item) => (
@@ -128,6 +133,6 @@ export function V2Header() {
           </nav>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }

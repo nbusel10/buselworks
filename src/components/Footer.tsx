@@ -20,10 +20,10 @@ export function Footer() {
             Phoenix, Arizona / Working Everywhere
           </p>
           <a
-            href="mailto:nancy@buselworks.com"
+            href="mailto:info@buselworks.com"
             className="mt-4 inline-block text-aqua transition-colors hover:text-white"
           >
-            nancy@buselworks.com
+            info@buselworks.com
           </a>
         </div>
 
@@ -48,9 +48,9 @@ export function Footer() {
         <div className="container-bw-wide flex flex-col gap-2 py-5 text-xs text-white/45 sm:flex-row sm:justify-between">
           <span>© {new Date().getFullYear()} Buselworks LLC</span>
           <div className="flex flex-wrap gap-4">
-            <Link href="/v2" className="hover:text-aqua">
+            <a href="/v2" className="hover:text-aqua">
               View alternate design →
-            </Link>
+            </a>
             <Link href="/contact" className="hover:text-aqua">
               Start Something →
             </Link>

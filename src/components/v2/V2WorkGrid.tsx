@@ -1,11 +1,28 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { workFilters, workProjects, type WorkFilter } from "@/data/work";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  parseWorkFilter,
+  workFilterHref,
+  workFilters,
+  workProjects,
+  type WorkFilter,
+} from "@/data/work";
 import { V2ProjectCard } from "@/components/v2/V2ProjectCard";
 
 export function V2WorkGrid() {
-  const [filter, setFilter] = useState<WorkFilter>("ALL");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [filter, setFilterState] = useState<WorkFilter>(() =>
+    parseWorkFilter(searchParams.get("filter") ?? undefined),
+  );
+
+  const setFilter = (next: WorkFilter) => {
+    setFilterState(next);
+    router.replace(workFilterHref(pathname, next), { scroll: false });
+  };
 
   const filtered = useMemo(() => {
     if (filter === "ALL") return workProjects;
@@ -33,7 +50,11 @@ export function V2WorkGrid() {
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((project) => (
-          <V2ProjectCard key={project.slug} project={project} />
+          <V2ProjectCard
+            key={project.slug}
+            project={project}
+            onCategoryClick={setFilter}
+          />
         ))}
       </div>
     </div>

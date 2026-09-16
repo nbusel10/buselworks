@@ -57,7 +57,7 @@ export function VibeCoding() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative min-h-[320px] rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur sm:p-6">
+          <div className="relative min-h-[280px] rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur sm:min-h-[320px] sm:p-6">
             <div className="mb-4 flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-aqua" />
               <span className="font-mono-label text-[10px] tracking-widest text-white/50">

@@ -1,14 +1,33 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { isAnalyticsEnabled } from "@/lib/analytics";
 import { needOptions } from "@/data/process";
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+const BOT_FILL_MS = 800;
 
 export function ContactForm({ variant = "light" }: { variant?: "light" | "dark" }) {
   const [status, setStatus] = useState<Status>("idle");
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID;
   const dark = variant === "dark";
+  const startedAt = useRef(Date.now());
+  const jsTokenRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (status !== "idle") return;
+    startedAt.current = Date.now();
+    if (jsTokenRef.current) jsTokenRef.current.value = "human";
+  }, [status]);
+
+  function isSpam(data: FormData) {
+    const honeypot = String(data.get("_gotcha") ?? "").trim();
+    const token = String(data.get("_js") ?? "");
+    const tooFast = Date.now() - startedAt.current < BOT_FILL_MS;
+    return Boolean(honeypot) || token !== "human" || tooFast;
+  }
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -19,6 +38,14 @@ export function ContactForm({ variant = "light" }: { variant?: "light" | "dark" 
 
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    if (isSpam(data)) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    data.delete("_js");
     setStatus("submitting");
 
     try {
@@ -30,6 +57,9 @@ export function ContactForm({ variant = "light" }: { variant?: "light" | "dark" 
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
       form.reset();
+      if (isAnalyticsEnabled()) {
+        sendGAEvent("event", "generate_lead", { method: "contact_form" });
+      }
     } catch {
       setStatus("error");
     }
@@ -61,8 +91,8 @@ export function ContactForm({ variant = "light" }: { variant?: "light" | "dark" 
         <p className={`mt-3 ${dark ? "text-white/60" : "text-ink-soft"}`}>
           I’ll take a look and get back to you soon. In the meantime, you can
           always reach me at{" "}
-          <a href="mailto:nancy@buselworks.com" className="text-aqua underline underline-offset-3">
-            nancy@buselworks.com
+          <a href="mailto:info@buselworks.com" className="text-aqua underline underline-offset-3">
+            info@buselworks.com
           </a>
           .
         </p>
@@ -78,14 +108,32 @@ export function ContactForm({ variant = "light" }: { variant?: "light" | "dark" 
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Name" name="name" required fieldClass={fieldClass} labelClass={labelClass} />
-        <Field label="Email" name="email" type="email" required fieldClass={fieldClass} labelClass={labelClass} />
+    <form onSubmit={onSubmit} className="relative space-y-5">
+      <div className="hp-trap" aria-hidden="true">
+        <label htmlFor="company_website">Company website</label>
+        <input
+          id="company_website"
+          type="text"
+          name="_gotcha"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+        <input
+          ref={jsTokenRef}
+          type="text"
+          name="_js"
+          defaultValue=""
+          tabIndex={-1}
+          autoComplete="off"
+        />
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Company / Organization" name="company" fieldClass={fieldClass} labelClass={labelClass} />
-        <Field label="Current Website" name="website" fieldClass={fieldClass} labelClass={labelClass} />
+        <Field label="Name" name="name" required autoComplete="name" fieldClass={fieldClass} labelClass={labelClass} />
+        <Field label="Email" name="email" type="email" required autoComplete="email" fieldClass={fieldClass} labelClass={labelClass} />
+      </div>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="Company / Organization" name="company" autoComplete="organization" fieldClass={fieldClass} labelClass={labelClass} />
+        <Field label="Current Website" name="website" autoComplete="url" fieldClass={fieldClass} labelClass={labelClass} />
       </div>
       <div>
         <label className={labelClass} htmlFor="need">
@@ -131,8 +179,8 @@ export function ContactForm({ variant = "light" }: { variant?: "light" | "dark" 
           Formspree isn’t configured yet. Add{" "}
           <code className="font-mono-label">NEXT_PUBLIC_FORMSPREE_ID</code> to
           your environment, or email{" "}
-          <a href="mailto:nancy@buselworks.com" className="underline">
-            nancy@buselworks.com
+          <a href="mailto:info@buselworks.com" className="underline">
+            info@buselworks.com
           </a>{" "}
           directly.
         </p>
@@ -141,8 +189,8 @@ export function ContactForm({ variant = "light" }: { variant?: "light" | "dark" 
       {status === "error" && (
         <p className={`text-sm ${dark ? "text-red-300" : "text-red-700"}`}>
           Something went wrong. Please try again or email{" "}
-          <a href="mailto:nancy@buselworks.com" className="underline">
-            nancy@buselworks.com
+          <a href="mailto:info@buselworks.com" className="underline">
+            info@buselworks.com
           </a>
           .
         </p>
@@ -169,6 +217,7 @@ function Field({
   name,
   type = "text",
   required,
+  autoComplete,
   fieldClass,
   labelClass,
 }: {
@@ -176,6 +225,7 @@ function Field({
   name: string;
   type?: string;
   required?: boolean;
+  autoComplete?: string;
   fieldClass: string;
   labelClass: string;
 }) {
@@ -189,6 +239,7 @@ function Field({
         name={name}
         type={type}
         required={required}
+        autoComplete={autoComplete}
         className={fieldClass}
       />
     </div>

@@ -1,11 +1,28 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { workFilters, workProjects, type WorkFilter } from "@/data/work";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {
+  parseWorkFilter,
+  workFilterHref,
+  workFilters,
+  workProjects,
+  type WorkFilter,
+} from "@/data/work";
 import { WorkCard } from "@/components/ui/WorkCard";
 
 export function WorkGrid() {
-  const [filter, setFilter] = useState<WorkFilter>("ALL");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [filter, setFilterState] = useState<WorkFilter>(() =>
+    parseWorkFilter(searchParams.get("filter") ?? undefined),
+  );
+
+  const setFilter = (next: WorkFilter) => {
+    setFilterState(next);
+    router.replace(workFilterHref(pathname, next), { scroll: false });
+  };
 
   const filtered = useMemo(() => {
     if (filter === "ALL") return workProjects;
@@ -49,6 +66,7 @@ export function WorkGrid() {
                         key={project.slug}
                         project={project}
                         large={i === 0 && items.length > 2}
+                        onCategoryClick={setFilter}
                       />
                     ))}
                   </div>
@@ -59,7 +77,11 @@ export function WorkGrid() {
       ) : (
         <div className="mt-12 grid gap-10 md:grid-cols-2">
           {filtered.map((project) => (
-            <WorkCard key={project.slug} project={project} />
+            <WorkCard
+              key={project.slug}
+              project={project}
+              onCategoryClick={setFilter}
+            />
           ))}
         </div>
       )}

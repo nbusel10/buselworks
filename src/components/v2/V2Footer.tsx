@@ -20,10 +20,10 @@ export function V2Footer() {
             Phoenix, Arizona / Working Everywhere
           </p>
           <a
-            href="mailto:nancy@buselworks.com"
+            href="mailto:info@buselworks.com"
             className="mt-3 inline-block text-aqua transition-colors hover:text-white"
           >
-            nancy@buselworks.com
+            info@buselworks.com
           </a>
         </div>
 
@@ -51,9 +51,9 @@ export function V2Footer() {
         <div className="v2-container-wide flex flex-col gap-2 py-4 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Buselworks LLC</span>
           <div className="flex flex-wrap gap-4">
-            <Link href="/" className="hover:text-aqua">
+            <a href="/" className="hover:text-aqua">
               View original design →
-            </Link>
+            </a>
             <Link href="/v2/contact" className="hover:text-aqua">
               Start Something →
             </Link>

@@ -8,7 +8,7 @@ import {
   useReducedMotion,
   type MotionValue,
 } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BrowserFrame } from "@/components/ui/BrowserFrame";
 import { PromptFlipCard } from "@/components/ui/PromptFlipCard";
 import { StageStrip } from "@/components/ui/StageStrip";
@@ -58,7 +58,8 @@ function useNegated(source: MotionValue<number>, factor = 1) {
 }
 
 export function Hero() {
-  const reduce = useReducedMotion();
+  const prefersReduced = useReducedMotion();
+  const [reduce, setReduce] = useState(false);
   const ref = useRef<HTMLElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -68,6 +69,10 @@ export function Hero() {
   const negY = useNegated(springY, 0.6);
   const softNegY = useNegated(springY, 0.4);
   const featured = workProjects.filter((p) => p.featured).slice(0, 2);
+
+  useEffect(() => {
+    setReduce(Boolean(prefersReduced));
+  }, [prefersReduced]);
 
   useEffect(() => {
     if (reduce) return;
@@ -93,12 +98,12 @@ export function Hero() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(28,28,28,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(28,28,28,0.04)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
 
-      <div className="container-bw-wide relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
+      <div className="container-bw-wide relative grid items-center gap-10 sm:gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="min-w-0">
           <p className="eyebrow">
             Web Design + Development / Phoenix + Everywhere
           </p>
-          <h1 className="font-display mt-5 max-w-xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+          <h1 className="font-display mt-5 max-w-xl text-[2.15rem] font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]">
             You bring the idea.
             <br />
             We’ll build what comes next
@@ -122,13 +127,13 @@ export function Hero() {
           <StageStrip className="mt-10" />
         </div>
 
-        <div className="relative mx-auto h-[380px] w-full max-w-lg sm:h-[440px] lg:h-[500px]">
+        <div className="relative mx-auto w-full max-w-lg lg:h-[500px]">
           <motion.div
             style={reduce ? undefined : { x: springX, y: springY }}
-            className="absolute left-[8%] top-[8%] z-10 w-[78%] rotate-[-4deg]"
+            className="lg:absolute lg:left-[8%] lg:top-[8%] lg:z-10 lg:w-[78%] lg:rotate-[-4deg]"
           >
             {featured[0] ? (
-              <BrowserFrame project={featured[0]} />
+              <BrowserFrame project={featured[0]} priority />
             ) : (
               <BrowserFrame url="example.com">
                 <HeroMockVisual label="prompt → layout" accent />
@@ -137,7 +142,7 @@ export function Hero() {
           </motion.div>
           <motion.div
             style={reduce ? undefined : { x: negX, y: negY }}
-            className="absolute right-0 top-[28%] z-20 w-[70%] rotate-[5deg]"
+            className="absolute right-0 top-[28%] z-20 hidden w-[70%] rotate-[5deg] lg:block"
           >
             {featured[1] ? (
               <BrowserFrame project={featured[1]} />
@@ -149,7 +154,7 @@ export function Hero() {
           </motion.div>
           <motion.div
             style={reduce ? undefined : { x: springX, y: softNegY }}
-            className="absolute bottom-0 left-[2%] z-30 w-[62%] rotate-[-2deg]"
+            className="absolute bottom-0 left-[2%] z-30 hidden w-[62%] rotate-[-2deg] lg:block"
           >
             <PromptFlipCard />
           </motion.div>

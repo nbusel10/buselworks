@@ -7,9 +7,11 @@ import type { WorkProject } from "@/data/types";
 export function ProjectScreenshot({
   project,
   className = "object-cover object-top",
+  priority = false,
 }: {
   project: WorkProject;
   className?: string;
+  priority?: boolean;
 }) {
   const [src, setSrc] = useState(project.image);
   const [failed, setFailed] = useState(false);
@@ -30,8 +32,9 @@ export function ProjectScreenshot({
       src={src}
       alt={`${project.name} website`}
       fill
+      priority={priority}
       className={className}
-      sizes="(max-width: 768px) 100vw, 50vw"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
       onError={() => {
         if (src.endsWith(".jpg")) {
           setSrc(`/work/${project.slug}.svg`);

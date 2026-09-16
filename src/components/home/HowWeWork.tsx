@@ -22,6 +22,10 @@ export function HowWeWork() {
               and what would make your customers’ lives easier. Then we
               prototype, experiment, design and code until it feels right.
             </p>
+            <p>
+              Need something online sooner? When the idea is clear, we can take
+              it all the way to a live website — without the long agency wait.
+            </p>
           </div>
         </Reveal>
 

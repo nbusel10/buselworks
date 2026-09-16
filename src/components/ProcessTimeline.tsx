@@ -19,7 +19,7 @@ export function ProcessTimeline({
   return (
     <div className="relative mt-10 md:mt-12">
       {/* Spreading rail */}
-      <div className="pointer-events-none absolute left-0 right-0 top-[1.15rem] hidden h-px bg-border md:block">
+      <div className="pointer-events-none absolute left-0 right-0 top-[1.15rem] hidden h-px bg-border lg:block">
         <motion.div
           className="h-full origin-left bg-gradient-to-r from-aqua via-aqua to-aqua/20"
           initial={{ scaleX: 0 }}
@@ -53,7 +53,7 @@ export function ProcessTimeline({
                 : { y: -4, transition: { duration: 0.25 } }
             }
           >
-            <div className="mb-3 hidden md:flex">
+            <div className="mb-3 hidden lg:flex">
               <motion.span
                 className="relative z-10 flex h-6 w-6 items-center justify-center rounded-full border-2 border-aqua bg-ivory"
                 initial={reduce ? false : { scale: 0 }}

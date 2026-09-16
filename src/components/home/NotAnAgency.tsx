@@ -19,6 +19,10 @@ const callouts = [
     copy: "Build what you need today without boxing yourself in tomorrow.",
   },
   {
+    title: "Idea to Live",
+    copy: "A clear idea can become a live website faster than you’d expect.",
+  },
+  {
     title: "A Human You Can Call",
     copy: "When something breaks or you have an idea, you know who to contact.",
   },
@@ -47,7 +51,7 @@ export function NotAnAgency() {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-2">
           <Reveal>
-            <div className="h-full rounded-2xl border border-border bg-surface p-6 md:p-8">
+            <div className="h-full rounded-2xl border border-border bg-surface p-5 md:p-8">
               <p className="font-mono-label text-xs tracking-widest text-muted">
                 Traditional agency
               </p>
@@ -72,7 +76,7 @@ export function NotAnAgency() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <div className="flex h-full flex-col justify-between rounded-2xl border border-aqua/40 bg-charcoal p-6 text-white md:p-8">
+            <div className="flex h-full flex-col justify-between rounded-2xl border border-aqua/40 bg-charcoal p-5 text-white md:p-8">
               <div>
                 <p className="font-mono-label text-xs tracking-widest text-aqua">
                   Buselworks
@@ -104,7 +108,7 @@ export function NotAnAgency() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {callouts.map((item, i) => (
             <Reveal key={item.title} delay={i * 0.05}>
               <div className="border-t border-border-strong pt-5">

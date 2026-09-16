@@ -135,3 +135,18 @@ export const workFilters = [
 ] as const;
 
 export type WorkFilter = (typeof workFilters)[number];
+
+export function parseWorkFilter(
+  value: string | string[] | undefined,
+): WorkFilter {
+  const raw = Array.isArray(value) ? value[0] : value;
+  if (raw && (workFilters as readonly string[]).includes(raw)) {
+    return raw as WorkFilter;
+  }
+  return "ALL";
+}
+
+export function workFilterHref(basePath: string, filter: WorkFilter): string {
+  if (filter === "ALL") return basePath;
+  return `${basePath}?filter=${encodeURIComponent(filter)}`;
+}

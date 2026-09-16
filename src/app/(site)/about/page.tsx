@@ -1,25 +1,34 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
-    "Hi. I’m Nancy. Buselworks is a boutique web design and development studio — intentionally small, highly capable, and collaborative.",
-};
+    "Hi. I’m Nancy — the person behind Buselworks. Intentionally small, highly capable, and collaborative.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
-    <div className="pb-20 pt-10 md:pb-28 md:pt-16">
-      <div className="container-bw-wide grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+    <div className="pb-16 pt-8 sm:pb-20 sm:pt-10 md:pb-28 md:pt-16">
+      <div className="container-bw-wide grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
         <Reveal>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-charcoal">
+          <div className="relative mx-auto aspect-[4/5] w-[65%] max-w-sm overflow-hidden rounded-2xl bg-charcoal sm:max-w-md lg:max-w-none">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(39,199,205,0.35),transparent_55%)]" />
+            <Image
+              src="/about/nancy-buselmeier-cutout.png"
+              alt="Nancy Buselmeier, founder of Buselworks"
+              fill
+              priority
+              className="object-contain object-[center_15%] p-3 pb-20"
+              sizes="(max-width: 1024px) 18rem, 28vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
             <div className="absolute inset-0 flex flex-col justify-end p-8">
-              <p className="font-mono-label text-xs tracking-widest text-aqua">
-                Photo coming soon
-              </p>
-              <p className="font-display mt-3 text-3xl font-semibold text-white">
+              <p className="font-display text-3xl font-semibold text-white">
                 Nancy Buselmeier
               </p>
               <p className="mt-2 text-sm text-white/65">
@@ -31,28 +40,26 @@ export default function AboutPage() {
 
         <Reveal delay={0.08}>
           <p className="eyebrow">About</p>
-          <h1 className="font-display mt-4 text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+          <h1
+            id="nancy"
+            className="font-display mt-4 text-[2.15rem] font-semibold tracking-tight sm:text-5xl md:text-6xl"
+          >
             Hi. I’m Nancy.
           </h1>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-soft md:text-lg">
+            <p>I’m the person behind Buselworks.</p>
             <p>
-              I’ve spent years designing, building and managing websites for
-              small businesses. For a long time, that meant WordPress.
+              I’ve spent years designing and building websites for small
+              businesses — first with WordPress, now with modern tools and AI
+              alongside human judgment.
             </p>
             <p>
-              Then AI changed the way websites could be designed and developed —
-              and I jumped in. Today I combine design experience, web
-              development, AI tools and a willingness to experiment until we get
-              something that feels right.
+              We still handle the unglamorous stuff: domains, hosting, email,
+              analytics, SEO, and what happens after launch.
             </p>
             <p>
-              I still care about all the unglamorous things too: domains,
-              hosting, email, analytics, SEO, mobile responsiveness and what
-              happens after the website launches.
-            </p>
-            <p>
-              Buselworks is intentionally small. You talk to me. We figure it
-              out together.
+              Buselworks is intentionally small. You work directly with us. We
+              figure it out together.
             </p>
           </div>
           <Link href="/contact" className="btn-primary mt-8 inline-flex">

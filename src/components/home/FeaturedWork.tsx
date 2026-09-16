@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { workProjects } from "@/data/work";
 import { Reveal } from "@/components/ui/Reveal";
-import { WorkCard } from "@/components/ui/WorkCard";
+import { WorkRow } from "@/components/ui/WorkRow";
 
 export function FeaturedWork() {
-  const featured = workProjects.filter((p) => p.featured).slice(0, 5);
+  const featured = workProjects.filter((p) => p.featured).slice(0, 3);
 
   return (
     <section className="bg-surface py-20 md:py-28">
@@ -21,11 +21,14 @@ export function FeaturedWork() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-10 md:grid-cols-2">
+        <div className="mt-12 flex flex-col">
           {featured.map((project, i) => (
-            <Reveal key={project.slug} delay={i * 0.05} className={i === 0 ? "md:col-span-2" : ""}>
-              <WorkCard project={project} large={i === 0} />
-            </Reveal>
+            <div
+              key={project.slug}
+              className={i > 0 ? "mt-10 border-t border-border pt-10 md:mt-14 md:pt-14" : ""}
+            >
+              <WorkRow project={project} index={i} workBasePath="/work" />
+            </div>
           ))}
         </div>
 

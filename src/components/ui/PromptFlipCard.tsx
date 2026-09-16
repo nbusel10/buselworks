@@ -31,8 +31,13 @@ const prompts = [
 ];
 
 export function PromptFlipCard({ className = "" }: { className?: string }) {
-  const reduce = useReducedMotion();
+  const prefersReduced = useReducedMotion();
+  const [reduce, setReduce] = useState(false);
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setReduce(Boolean(prefersReduced));
+  }, [prefersReduced]);
 
   useEffect(() => {
     if (reduce) return;

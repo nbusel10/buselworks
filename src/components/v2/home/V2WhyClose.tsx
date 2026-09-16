@@ -25,6 +25,10 @@ export function V2WhyClose() {
                 built for today, open for tomorrow
               </li>
               <li>
+                <span className="font-semibold text-ink">Idea to live</span> — a
+                clear idea can become a live website faster than you’d expect
+              </li>
+              <li>
                 <span className="font-semibold text-ink">A human you can call</span>{" "}
                 — when something breaks or you have an idea
               </li>
@@ -39,7 +43,7 @@ export function V2WhyClose() {
           </Reveal>
 
           <Reveal variant="scale" delay={0.1}>
-            <div className="rounded-2xl bg-charcoal px-7 py-8 text-white transition-transform duration-300 hover:-translate-y-1 md:px-8 md:py-10">
+            <div className="rounded-2xl bg-charcoal px-6 py-8 text-white transition-transform duration-300 hover:-translate-y-1 md:px-8 md:py-10">
               <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                 Have a “what if we…” idea?
               </h2>

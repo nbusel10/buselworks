@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { workProjects } from "@/data/work";
-import { V2ProjectCard } from "@/components/v2/V2ProjectCard";
 import { Reveal } from "@/components/ui/Reveal";
+import { WorkRow } from "@/components/ui/WorkRow";
 
 export function V2FeaturedWork() {
   const featured = workProjects.filter((p) => p.featured).slice(0, 3);
@@ -21,11 +21,14 @@ export function V2FeaturedWork() {
           </Link>
         </Reveal>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 flex flex-col">
           {featured.map((project, i) => (
-            <Reveal key={project.slug} delay={i * 0.08} variant="scale">
-              <V2ProjectCard project={project} />
-            </Reveal>
+            <div
+              key={project.slug}
+              className={i > 0 ? "mt-9 border-t border-border pt-9 md:mt-12 md:pt-12" : ""}
+            >
+              <WorkRow project={project} index={i} workBasePath="/v2/work" />
+            </div>
           ))}
         </div>
       </div>

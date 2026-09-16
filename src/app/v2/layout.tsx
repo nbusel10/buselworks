@@ -2,15 +2,22 @@ import type { Metadata } from "next";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { V2Footer } from "@/components/v2/V2Footer";
 import { V2Header } from "@/components/v2/V2Header";
+import { pageMetadata } from "@/lib/seo";
 import "./v2.css";
 
 export const metadata: Metadata = {
+  ...pageMetadata({
+    title: "Alternate design",
+    description:
+      "A simpler alternate design for Buselworks — custom websites with modern tools, AI, and human judgment.",
+    path: "/v2",
+    index: false,
+    canonicalPath: "/",
+  }),
   title: {
-    default: "Buselworks — Web Design + Development",
+    default: "Alternate design",
     template: "%s · Buselworks",
   },
-  description:
-    "A simpler alternate design for Buselworks — custom websites with modern tools, AI, and human judgment.",
 };
 
 export default function V2Layout({

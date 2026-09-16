@@ -36,7 +36,7 @@ export function ServicesTeaser() {
                 className={`${spans[i] ?? "md:col-span-2"}`}
               >
                 <TiltCard className="h-full">
-                  <article className="flex h-full flex-col justify-between border border-border bg-surface p-6 transition-colors duration-300 hover:border-aqua/50 hover:bg-white md:p-8">
+        <article className="flex h-full flex-col justify-between border border-border bg-surface p-5 transition-colors duration-300 hover:border-aqua/50 hover:bg-white sm:p-6 md:p-8">
                     <div>
                       <p className="font-mono-label text-[10px] tracking-[0.14em] uppercase text-aqua-dark">
                         {service.category}

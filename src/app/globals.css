@@ -55,13 +55,23 @@ body {
 }
 
 .container-bw {
-  width: min(100% - 2rem, 72rem);
+  width: min(100% - 2.5rem, 72rem);
   margin-inline: auto;
 }
 
 .container-bw-wide {
-  width: min(100% - 2rem, 80rem);
+  width: min(100% - 2.5rem, 80rem);
   margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-bw {
+    width: min(100% - 4rem, 72rem);
+  }
+
+  .container-bw-wide {
+    width: min(100% - 4rem, 80rem);
+  }
 }
 
 .text-balance {
@@ -125,6 +135,33 @@ body {
   color: var(--aqua-dark);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.hp-trap {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Featured work drag-to-color reveal. The grayscale side is painted with
+   backdrop-filter so it works over a screenshot, a placeholder, or the
+   typographic fallback without duplicating the image. */
+.reveal-overlay {
+  display: none;
+}
+
+@supports ((-webkit-backdrop-filter: grayscale(1)) or (backdrop-filter: grayscale(1))) {
+  .reveal-overlay {
+    display: block;
+  }
+}
+
+.reveal-gray {
+  -webkit-backdrop-filter: grayscale(1);
+  backdrop-filter: grayscale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {

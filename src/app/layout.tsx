@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { DM_Sans, JetBrains_Mono, Outfit } from "next/font/google";
+import { JsonLd } from "@/components/JsonLd";
+import { isStaging, SITE, siteJsonLd } from "@/lib/seo";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -20,29 +22,74 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#f7f4ef",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://buselworks.com"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "Buselworks — Web Design + Development",
+    default: SITE.title,
     template: "%s · Buselworks",
   },
-  description:
-    "Buselworks designs and builds custom websites using modern development tools, AI, and a whole lot of human judgment. Phoenix + everywhere.",
+  description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: "Nancy Buselmeier", url: `${SITE.url}/about` }],
+  creator: "Nancy Buselmeier",
+  publisher: SITE.legalName,
+  category: "Web design and development",
+  keywords: [
+    "web design Phoenix",
+    "custom website development",
+    "AI web development",
+    "small business websites",
+    "Buselworks",
+  ],
+  alternates: {
+    canonical: SITE.url,
+  },
   openGraph: {
-    title: "Buselworks — Web Design + Development",
-    description:
-      "Tell us what you want to build. We’ll figure out the best way to build it.",
-    url: "https://buselworks.com",
-    siteName: "Buselworks",
-    locale: "en_US",
+    title: SITE.title,
+    description: SITE.tagline,
+    url: SITE.url,
+    siteName: SITE.name,
+    locale: SITE.locale,
     type: "website",
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: SITE.title,
+      },
     ],
-    apple: "/apple-touch-icon.svg",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.title,
+    description: SITE.tagline,
+    images: ["/opengraph-image"],
+  },
+  robots: isStaging
+    ? {
+        index: false,
+        follow: false,
+        googleBot: { index: false, follow: false, noimageindex: true },
+      }
+    : {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+          "max-video-preview": -1,
+        },
+      },
 };
 
 export default function RootLayout({
@@ -53,9 +100,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${outfit.variable} ${dmSans.variable} ${jetbrains.variable} h-full antialiased`}
     >
-      <body className="min-h-full antialiased">{children}</body>
+      <body className="min-h-full antialiased">
+        <JsonLd data={siteJsonLd} />
+        {children}
+      </body>
     </html>
   );
 }

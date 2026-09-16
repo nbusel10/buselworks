@@ -10,6 +10,7 @@
     "capture-work": "node scripts/capture-work.mjs"
   },
   "dependencies": {
+    "@next/third-parties": "^16.3.5",
     "framer-motion": "^13.2.0",
     "next": "16.3.4",
     "react": "19.2.8",

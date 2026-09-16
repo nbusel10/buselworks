@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { WorkProject } from "@/data/types";
 import { ProjectScreenshot } from "./ProjectScreenshot";
+import { ScrollColorReveal } from "./ScrollColorReveal";
 
 type BrowserFrameProps = {
   children?: ReactNode;
@@ -11,6 +12,8 @@ type BrowserFrameProps = {
   className?: string;
   imageClassName?: string;
   variant?: "light" | "dark";
+  priority?: boolean;
+  reveal?: boolean;
 };
 
 export function BrowserFrame({
@@ -22,6 +25,8 @@ export function BrowserFrame({
   className = "",
   imageClassName = "object-cover object-top",
   variant = "light",
+  priority = false,
+  reveal = false,
 }: BrowserFrameProps) {
   const displayUrl = (project?.url ?? url).replace(/^https?:\/\//, "");
   const dark = variant === "dark";
@@ -56,13 +61,18 @@ export function BrowserFrame({
       </div>
       <div className={`relative aspect-[16/10] ${dark ? "bg-[#0b0b0b]" : "bg-ivory"}`}>
         {project ? (
-          <ProjectScreenshot project={project} className={imageClassName} />
+          <ProjectScreenshot
+            project={project}
+            className={imageClassName}
+            priority={priority}
+          />
         ) : src ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={src} alt={alt} className={`absolute inset-0 h-full w-full ${imageClassName}`} />
         ) : (
           children
         )}
+        {reveal ? <ScrollColorReveal /> : null}
       </div>
     </div>
   );

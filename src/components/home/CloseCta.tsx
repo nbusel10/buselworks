@@ -29,10 +29,10 @@ export function CloseCta() {
               Start Something <span aria-hidden>→</span>
             </Link>
             <a
-              href="mailto:nancy@buselworks.com"
+              href="mailto:info@buselworks.com"
               className="text-sm text-muted transition-colors hover:text-aqua-dark"
             >
-              nancy@buselworks.com
+              info@buselworks.com
             </a>
           </div>
         </Reveal>
