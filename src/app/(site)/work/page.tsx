@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { WorkGrid } from "@/components/WorkGrid";
+import { V2WorkGrid } from "@/components/v2/V2WorkGrid";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -12,18 +12,18 @@ export const metadata: Metadata = pageMetadata({
 
 export default function WorkPage() {
   return (
-    <div className="pb-16 pt-8 sm:pb-20 sm:pt-10 md:pb-28 md:pt-16">
-      <div className="container-bw-wide">
+    <div className="v2-section pt-10 md:pt-14">
+      <div className="v2-container-wide">
         <p className="eyebrow">Portfolio</p>
-        <h1 className="font-display mt-4 text-[2.15rem] font-semibold tracking-tight sm:text-5xl md:text-6xl">
+        <h1 className="font-display mt-3 text-[2.15rem] font-semibold tracking-tight sm:text-5xl">
           The Work
         </h1>
-        <p className="mt-4 max-w-xl text-base text-ink-soft md:text-lg">
+        <p className="mt-3 max-w-lg text-base text-ink-soft">
           Different businesses. Different audiences. Different solutions.
         </p>
-        <div className="mt-12">
+        <div className="mt-8">
           <Suspense fallback={null}>
-            <WorkGrid />
+            <V2WorkGrid />
           </Suspense>
         </div>
       </div>

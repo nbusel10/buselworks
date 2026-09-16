@@ -1,6 +1,7 @@
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { V2Footer } from "@/components/v2/V2Footer";
+import { V2Header } from "@/components/v2/V2Header";
+import "./v2.css";
 
 export default function SiteLayout({
   children,
@@ -8,18 +9,18 @@ export default function SiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex min-h-full flex-col bg-ivory text-ink">
+    <div className="theme-v2 flex min-h-full flex-col bg-ivory text-ink">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-aqua focus:px-4 focus:py-2"
       >
         Skip to content
       </a>
-      <Header />
+      <V2Header />
       <main id="main" className="flex-1">
         {children}
       </main>
-      <Footer />
+      <V2Footer />
       <ScrollProgress />
     </div>
   );

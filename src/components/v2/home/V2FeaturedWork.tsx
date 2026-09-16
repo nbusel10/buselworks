@@ -16,7 +16,7 @@ export function V2FeaturedWork() {
               Built differently for every business.
             </h2>
           </div>
-          <Link href="/v2/work" className="btn-secondary shrink-0">
+          <Link href="/work" className="btn-secondary shrink-0">
             View all <span aria-hidden>→</span>
           </Link>
         </Reveal>
@@ -27,7 +27,7 @@ export function V2FeaturedWork() {
               key={project.slug}
               className={i > 0 ? "mt-9 border-t border-border pt-9 md:mt-12 md:pt-12" : ""}
             >
-              <WorkRow project={project} index={i} workBasePath="/v2/work" />
+              <WorkRow project={project} index={i} workBasePath="/work" />
             </div>
           ))}
         </div>

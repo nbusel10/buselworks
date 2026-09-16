@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import { LogoWordmark } from "@/components/Logo";
 
 const nav = [
-  { href: "/v2/work", label: "Work" },
-  { href: "/v2/services", label: "Services" },
-  { href: "/v2/#how-we-work", label: "How We Work" },
-  { href: "/v2/about", label: "About" },
-  { href: "/v2/contact", label: "Contact" },
+  { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
+  { href: "/#how-we-work", label: "How We Work" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function V2Header() {
@@ -49,7 +49,7 @@ export function V2Header() {
       >
         <div className="v2-container-wide flex h-16 items-center justify-between gap-4 md:h-[4.25rem]">
           <Link
-            href="/v2"
+            href="/"
             className="relative z-50"
             aria-label="Buselworks home"
             onClick={closeMenu}
@@ -60,7 +60,7 @@ export function V2Header() {
           <nav className="hidden items-center gap-6 xl:flex xl:gap-7" aria-label="Primary">
             {nav.map((item) => {
               const active =
-                item.href !== "/v2/#how-we-work" && pathname === item.href;
+                item.href !== "/#how-we-work" && pathname === item.href;
               return (
                 <Link
                   key={item.href}
@@ -73,7 +73,7 @@ export function V2Header() {
                 </Link>
               );
             })}
-            <Link href="/v2/contact" className="btn-primary text-sm">
+            <Link href="/contact" className="btn-primary text-sm">
               Start Something <span aria-hidden>→</span>
             </Link>
           </nav>
@@ -124,7 +124,7 @@ export function V2Header() {
               </Link>
             ))}
             <Link
-              href="/v2/contact"
+              href="/contact"
               onClick={closeMenu}
               className="btn-primary mt-4 w-fit text-base"
             >

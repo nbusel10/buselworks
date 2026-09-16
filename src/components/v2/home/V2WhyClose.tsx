@@ -35,7 +35,7 @@ export function V2WhyClose() {
             </ul>
             <p className="mt-5 text-sm text-muted">
               Hosting, email, SEO, analytics, and maintenance available —{" "}
-              <Link href="/v2/services" className="link-aqua">
+              <Link href="/services" className="link-aqua">
                 see services
               </Link>
               .
@@ -50,7 +50,7 @@ export function V2WhyClose() {
               <p className="mt-3 text-sm text-white/65">
                 It doesn’t have to be figured out yet.
               </p>
-              <Link href="/v2/contact" className="btn-primary mt-6 inline-flex">
+              <Link href="/contact" className="btn-primary mt-6 inline-flex">
                 Start Something <span aria-hidden>→</span>
               </Link>
             </div>

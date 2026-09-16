@@ -2,10 +2,10 @@ import Link from "next/link";
 import { LogoWordmark } from "@/components/Logo";
 
 const footerLinks = [
-  { href: "/v2/work", label: "Work" },
-  { href: "/v2/services", label: "Services" },
-  { href: "/v2/about", label: "About" },
-  { href: "/v2/contact", label: "Contact" },
+  { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function V2Footer() {
@@ -50,14 +50,9 @@ export function V2Footer() {
       <div className="border-t border-white/10">
         <div className="v2-container-wide flex flex-col gap-2 py-4 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Buselworks LLC</span>
-          <div className="flex flex-wrap gap-4">
-            <a href="/" className="hover:text-aqua">
-              View original design →
-            </a>
-            <Link href="/v2/contact" className="hover:text-aqua">
-              Start Something →
-            </Link>
-          </div>
+          <Link href="/contact" className="hover:text-aqua">
+            Start Something →
+          </Link>
         </div>
       </div>
     </footer>

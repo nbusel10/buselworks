@@ -47,14 +47,9 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container-bw-wide flex flex-col gap-2 py-5 text-xs text-white/45 sm:flex-row sm:justify-between">
           <span>© {new Date().getFullYear()} Buselworks LLC</span>
-          <div className="flex flex-wrap gap-4">
-            <a href="/v2" className="hover:text-aqua">
-              View alternate design →
-            </a>
-            <Link href="/contact" className="hover:text-aqua">
-              Start Something →
-            </Link>
-          </div>
+          <Link href="/contact" className="hover:text-aqua">
+            Start Something →
+          </Link>
         </div>
       </div>
     </footer>

@@ -119,10 +119,10 @@ export function V2Hero() {
             it, code it and launch it.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-5">
-            <Link href="/v2/contact" className="btn-primary">
+            <Link href="/contact" className="btn-primary">
               Start Something <span aria-hidden>→</span>
             </Link>
-            <Link href="/v2/work" className="btn-secondary">
+            <Link href="/work" className="btn-secondary">
               See Our Work
             </Link>
           </div>

@@ -9,9 +9,9 @@ Marketing site for [Buselworks](https://buselworks.com) — boutique web design 
 - Framer Motion
 - Formspree (contact form)
 
-## Alternate design (v2)
+## Design
 
-A simpler ivory redesign lives at `/v2` for side-by-side comparison with the fuller original at `/`. Footers link between them.
+The site uses the simpler ivory design (formerly `/v2`) as the primary experience at `/`.
 
 ## Setup
 

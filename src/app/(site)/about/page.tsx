@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Reveal } from "@/components/ui/Reveal";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -13,40 +12,35 @@ export const metadata: Metadata = pageMetadata({
 
 export default function AboutPage() {
   return (
-    <div className="pb-16 pt-8 sm:pb-20 sm:pt-10 md:pb-28 md:pt-16">
-      <div className="container-bw-wide grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-        <Reveal>
-          <div className="relative mx-auto aspect-[4/5] w-[65%] max-w-sm overflow-hidden rounded-2xl bg-charcoal sm:max-w-md lg:max-w-none">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(39,199,205,0.35),transparent_55%)]" />
-            <Image
-              src="/about/nancy-buselmeier-cutout.png"
-              alt="Nancy Buselmeier, founder of Buselworks"
-              fill
-              priority
-              className="object-contain object-[center_15%] p-3 pb-20"
-              sizes="(max-width: 1024px) 18rem, 28vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
-            <div className="absolute inset-0 flex flex-col justify-end p-8">
-              <p className="font-display text-3xl font-semibold text-white">
-                Nancy Buselmeier
-              </p>
-              <p className="mt-2 text-sm text-white/65">
-                Founder · Designer · Developer
-              </p>
-            </div>
+    <div className="v2-section pt-10 md:pt-14">
+      <div className="v2-container-wide grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="relative mx-auto aspect-[4/5] w-[65%] max-w-sm overflow-hidden rounded-2xl bg-charcoal sm:max-w-md lg:max-w-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(39,199,205,0.3),transparent_55%)]" />
+          <Image
+            src="/about/nancy-buselmeier-cutout.png"
+            alt="Nancy Buselmeier, founder of Buselworks"
+            fill
+            priority
+            className="object-contain object-[center_15%] p-3 pb-20"
+            sizes="(max-width: 1024px) 18rem, 28vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-end p-7">
+            <p className="font-display text-2xl font-semibold text-white">
+              Nancy Buselmeier
+            </p>
+            <p className="mt-1 text-sm text-white/60">
+              Founder · Designer · Developer
+            </p>
           </div>
-        </Reveal>
+        </div>
 
-        <Reveal delay={0.08}>
+        <div>
           <p className="eyebrow">About</p>
-          <h1
-            id="nancy"
-            className="font-display mt-4 text-[2.15rem] font-semibold tracking-tight sm:text-5xl md:text-6xl"
-          >
+          <h1 className="font-display mt-3 text-[2.15rem] font-semibold tracking-tight sm:text-5xl">
             Hi. I’m Nancy.
           </h1>
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-soft md:text-lg">
+          <div className="mt-5 max-w-xl space-y-3 text-base leading-relaxed text-ink-soft">
             <p>I’m the person behind Buselworks.</p>
             <p>
               I’ve spent years designing and building websites for small
@@ -62,10 +56,10 @@ export default function AboutPage() {
               figure it out together.
             </p>
           </div>
-          <Link href="/contact" className="btn-primary mt-8 inline-flex">
+          <Link href="/contact" className="btn-primary mt-7 inline-flex">
             Let’s Build Something <span aria-hidden>→</span>
           </Link>
-        </Reveal>
+        </div>
       </div>
     </div>
   );

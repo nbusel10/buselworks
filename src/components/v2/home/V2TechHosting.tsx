@@ -26,7 +26,7 @@ export function V2TechHosting() {
               </span>
             ))}
           </div>
-          <Link href="/v2/services" className="btn-secondary mt-8 inline-flex">
+          <Link href="/services" className="btn-secondary mt-8 inline-flex">
             All services <span aria-hidden>→</span>
           </Link>
         </Reveal>
