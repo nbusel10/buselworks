@@ -26,7 +26,9 @@ export const OG_IMAGE = {
 
 export function absoluteUrl(path = "/"): string {
   if (!path || path === "/") return SITE.url;
-  return `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  const withSlash = normalized.endsWith("/") ? normalized : `${normalized}/`;
+  return `${SITE.url}${withSlash}`;
 }
 
 export function pageMetadata({
@@ -103,7 +105,7 @@ export const siteJsonLd = {
         addressRegion: "AZ",
         addressCountry: "US",
       },
-      founder: { "@id": `${SITE.url}/about#nancy` },
+      founder: { "@id": `${SITE.url}/about/#nancy` },
       contactPoint: {
         "@type": "ContactPoint",
         email: SITE.email,
@@ -123,11 +125,11 @@ export const siteJsonLd = {
     },
     {
       "@type": "Person",
-      "@id": `${SITE.url}/about#nancy`,
+      "@id": `${SITE.url}/about/#nancy`,
       name: "Nancy Buselmeier",
       jobTitle: "Founder · Designer · Developer",
       worksFor: { "@id": `${SITE.url}/#business` },
-      url: `${SITE.url}/about`,
+      url: `${SITE.url}/about/`,
       image: `${SITE.url}/about/nancy-buselmeier.png`,
       email: SITE.email,
     },
