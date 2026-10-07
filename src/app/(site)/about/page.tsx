@@ -14,22 +14,21 @@ export default function AboutPage() {
   return (
     <div className="v2-section pt-10 md:pt-14">
       <div className="v2-container-wide grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="relative mx-auto aspect-[4/5] w-[65%] max-w-sm overflow-hidden rounded-2xl bg-charcoal sm:max-w-md lg:max-w-none">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(39,199,205,0.3),transparent_55%)]" />
+        <div className="relative mx-auto aspect-[4/5] w-[65%] max-w-sm overflow-hidden rounded-2xl bg-[#c4bdb0] sm:max-w-md lg:max-w-none">
           <Image
-            src="/about/nancy-buselmeier-cutout.png"
+            src="/about/nancy-buselmeier.png"
             alt="Nancy Buselmeier, founder of Buselworks"
             fill
             priority
-            className="object-contain object-[center_15%] p-3 pb-20"
+            className="object-cover object-[center_18%]"
             sizes="(max-width: 1024px) 18rem, 28vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
           <div className="absolute inset-0 flex flex-col justify-end p-7">
             <p className="font-display text-2xl font-semibold text-white">
               Nancy Buselmeier
             </p>
-            <p className="mt-1 text-sm text-white/60">
+            <p className="mt-1 text-sm text-white/70">
               Founder · Designer · Developer
             </p>
           </div>
