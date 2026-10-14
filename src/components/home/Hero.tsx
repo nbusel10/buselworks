@@ -10,7 +10,6 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { BrowserFrame } from "@/components/ui/BrowserFrame";
-import { PromptFlipCard } from "@/components/ui/PromptFlipCard";
 import { StageStrip } from "@/components/ui/StageStrip";
 import { workProjects } from "@/data/work";
 
@@ -68,7 +67,7 @@ export function Hero() {
   const negX = useNegated(springX);
   const negY = useNegated(springY, 0.6);
   const softNegY = useNegated(springY, 0.4);
-  const featured = workProjects.filter((p) => p.featured).slice(0, 2);
+  const featured = workProjects.filter((p) => p.featured).slice(0, 3);
 
   useEffect(() => {
     setReduce(Boolean(prefersReduced));
@@ -156,7 +155,13 @@ export function Hero() {
             style={reduce ? undefined : { x: springX, y: softNegY }}
             className="absolute bottom-0 left-[2%] z-30 hidden w-[62%] rotate-[-2deg] lg:block"
           >
-            <PromptFlipCard />
+            {featured[2] ? (
+              <BrowserFrame project={featured[2]} />
+            ) : (
+              <BrowserFrame url="studio.dev">
+                <HeroMockVisual label="launched site" />
+              </BrowserFrame>
+            )}
           </motion.div>
         </div>
       </div>

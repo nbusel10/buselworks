@@ -10,6 +10,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = join(__dirname, "..", "public", "work");
 
 const projects = [
+  { slug: "greyedge-group", name: "The GreyEdge Group", url: "https://greyedgegroup.com", cat: "Energy", viewportHeight: 978 },
+  { slug: "rkidds-pizza-and-wings", name: "R. Kidds Pizza & Wings", url: "https://rkiddspizzaandwings.com", cat: "Restaurant" },
   { slug: "bettys-rooste", name: "Betty's Rooste", url: "https://bettysrooste.com", cat: "Restaurant" },
   { slug: "christinas-beauty-room", name: "Christina's Beauty Room", url: "https://christinasbeautyroom.com", cat: "Beauty" },
   { slug: "ckm-travel", name: "CKM Travel", url: "https://ckmtravel.com", cat: "Travel" },
@@ -71,6 +73,7 @@ async function capture() {
     const out = join(outDir, `${p.slug}.jpg`);
     try {
       console.log("capturing", p.url);
+      await page.setViewportSize({ width: 1440, height: p.viewportHeight ?? 900 });
       await page.goto(p.url, { waitUntil: "domcontentloaded", timeout: 45000 });
       await page.waitForTimeout(2500);
       // Hide common cookie banners when possible

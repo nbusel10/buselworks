@@ -2,14 +2,25 @@ import type { WorkProject } from "./types";
 
 export const workProjects: WorkProject[] = [
   {
-    name: "Betty's Rooste",
-    slug: "bettys-rooste",
-    url: "https://bettysrooste.com",
+    name: "The GreyEdge Group",
+    slug: "greyedge-group",
+    url: "https://greyedgegroup.com",
+    category: "professional",
+    categoryLabel: "Energy / Professional Services",
+    filterGroup: "PROFESSIONAL",
+    descriptor: "Technical site for a thermal energy network consultancy.",
+    image: "/work/greyedge-group.jpg",
+    featured: true,
+  },
+  {
+    name: "R. Kidds Pizza & Wings",
+    slug: "rkidds-pizza-and-wings",
+    url: "https://rkiddspizzaandwings.com",
     category: "food",
     categoryLabel: "Restaurant / Hospitality",
     filterGroup: "FOOD",
-    descriptor: "Warm hospitality site for a Phoenix restaurant.",
-    image: "/work/bettys-rooste.jpg",
+    descriptor: "Neighborhood pizza shop built around pickup and delivery.",
+    image: "/work/rkidds-pizza-and-wings.jpg",
     featured: true,
   },
   {
@@ -24,6 +35,17 @@ export const workProjects: WorkProject[] = [
     featured: true,
   },
   {
+    name: "Betty's Rooste",
+    slug: "bettys-rooste",
+    url: "https://bettysrooste.com",
+    category: "food",
+    categoryLabel: "Restaurant / Hospitality",
+    filterGroup: "FOOD",
+    descriptor: "Warm hospitality site for a Phoenix restaurant.",
+    image: "/work/bettys-rooste.jpg",
+    featured: false,
+  },
+  {
     name: "CKM Travel",
     slug: "ckm-travel",
     url: "https://ckmtravel.com",
@@ -32,7 +54,7 @@ export const workProjects: WorkProject[] = [
     filterGroup: "TRAVEL",
     descriptor: "Luxury travel experiences with editorial presence.",
     image: "/work/ckm-travel.jpg",
-    featured: true,
+    featured: false,
   },
   {
     name: "Eat. Drink. Work. Play.",
@@ -54,7 +76,7 @@ export const workProjects: WorkProject[] = [
     filterGroup: "TRAVEL",
     descriptor: "Travel storytelling with immersive imagery.",
     image: "/work/live-a-life-explored.jpg",
-    featured: true,
+    featured: false,
   },
   {
     name: "Lynn Balter",
@@ -87,7 +109,7 @@ export const workProjects: WorkProject[] = [
     filterGroup: "NONPROFIT",
     descriptor: "Mission-driven nonprofit with clear calls to action.",
     image: "/work/novi-foundation.jpg",
-    featured: true,
+    featured: false,
   },
   {
     name: "TR Fitness Centers",
