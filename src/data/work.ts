@@ -133,17 +133,6 @@ export const workProjects: WorkProject[] = [
     image: "/work/wade-weber.jpg",
     featured: false,
   },
-  {
-    name: "SibHub",
-    slug: "sibhub",
-    url: "https://yoursibhub.com",
-    category: "community",
-    categoryLabel: "Community / Relationship Education",
-    filterGroup: "PROFESSIONAL",
-    descriptor: "Community education platform with approachable UX.",
-    image: "/work/sibhub.jpg",
-    featured: false,
-  },
 ];
 
 export const workFilters = [

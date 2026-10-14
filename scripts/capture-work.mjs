@@ -22,7 +22,6 @@ const projects = [
   { slug: "novi-foundation", name: "Novi Foundation", url: "https://thenovifoundationforcures.org", cat: "Nonprofit" },
   { slug: "tr-fitness", name: "TR Fitness Centers", url: "https://trfitnesscenters.com", cat: "Fitness" },
   { slug: "wade-weber", name: "Wade Weber", url: "https://wadeweber.com", cat: "Artist" },
-  { slug: "sibhub", name: "SibHub", url: "https://yoursibhub.com", cat: "Community" },
 ];
 
 function placeholderSvg(name, cat) {
