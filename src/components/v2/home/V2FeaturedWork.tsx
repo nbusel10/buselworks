@@ -1,10 +1,22 @@
 import Link from "next/link";
 import { workProjects } from "@/data/work";
+import type { WorkProject } from "@/data/types";
 import { Reveal } from "@/components/ui/Reveal";
-import { WorkRow } from "@/components/ui/WorkRow";
+import { V2ShuffleDeck } from "./V2ShuffleDeck";
+
+const deckSlugs = [
+  "greyedge-group",
+  "rkidds-pizza-and-wings",
+  "christinas-beauty-room",
+  "dr-bluma-sapir",
+  "ckm-travel",
+] as const;
 
 export function V2FeaturedWork() {
-  const featured = workProjects.filter((p) => p.featured).slice(0, 3);
+  const projects = deckSlugs.flatMap((slug) => {
+    const project = workProjects.find((item) => item.slug === slug);
+    return project ? [project] : [];
+  }) satisfies WorkProject[];
 
   return (
     <section className="v2-section bg-surface">
@@ -21,16 +33,7 @@ export function V2FeaturedWork() {
           </Link>
         </Reveal>
 
-        <div className="mt-8 flex flex-col">
-          {featured.map((project, i) => (
-            <div
-              key={project.slug}
-              className={i > 0 ? "mt-9 border-t border-border pt-9 md:mt-12 md:pt-12" : ""}
-            >
-              <WorkRow project={project} index={i} workBasePath="/work" />
-            </div>
-          ))}
-        </div>
+        <V2ShuffleDeck projects={projects} />
       </div>
     </section>
   );

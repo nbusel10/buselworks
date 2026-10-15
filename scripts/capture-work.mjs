@@ -13,6 +13,7 @@ const projects = [
   { slug: "greyedge-group", name: "The GreyEdge Group", url: "https://greyedgegroup.com", cat: "Energy", viewportHeight: 978 },
   { slug: "rkidds-pizza-and-wings", name: "R. Kidds Pizza & Wings", url: "https://rkiddspizzaandwings.com", cat: "Restaurant" },
   { slug: "bettys-rooste", name: "Betty's Rooste", url: "https://bettysrooste.com", cat: "Restaurant" },
+  { slug: "dr-bluma-sapir", name: "Dr. Bluma Sapir", url: "https://drblumasapir.com", cat: "Psychology" },
   { slug: "christinas-beauty-room", name: "Christina's Beauty Room", url: "https://christinasbeautyroom.com", cat: "Beauty" },
   { slug: "ckm-travel", name: "CKM Travel", url: "https://ckmtravel.com", cat: "Travel" },
   { slug: "eat-drink-work-play", name: "Eat. Drink. Work. Play.", url: "https://eatdrinkworkplay.com", cat: "Lifestyle" },

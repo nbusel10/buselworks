@@ -35,6 +35,17 @@ export const workProjects: WorkProject[] = [
     featured: true,
   },
   {
+    name: "Dr. Bluma Sapir",
+    slug: "dr-bluma-sapir",
+    url: "https://drblumasapir.com",
+    category: "professional",
+    categoryLabel: "Clinical Psychology",
+    filterGroup: "PROFESSIONAL",
+    descriptor: "Practice site for a licensed clinical psychologist.",
+    image: "/work/dr-bluma-sapir.jpg",
+    featured: true,
+  },
+  {
     name: "Betty's Rooste",
     slug: "bettys-rooste",
     url: "https://bettysrooste.com",
